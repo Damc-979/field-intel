@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HelpingHand — free travel safety app. Emergency numbers, first aid, evacuation guides. Works offline." />
+    <title>HelpingHand — Travel Safety</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --coral:   #e07a5f;
+            --cream:   #faf6f0;
+            --ink:     #3a2e22;
+            --muted:   #7a6a5a;
+            --border:  #e8ddd0;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        a { color: var(--coral); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── HEADER ── */
+        .lp-header {
+            background: var(--cream);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .lp-logo {
+            font-family: "Special Elite", cursive;
+            font-size: 1.3rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lp-logo span { font-size: 1.5rem; }
+
+        .lp-nav-btn {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.2rem;
+            background: var(--coral);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .lp-nav-btn:hover { opacity: 0.87; text-decoration: none; }
+
+        /* ── HERO ── */
+        .lp-hero {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .lp-hero-stamp {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 1rem;
+        }
+
+        .lp-hero h1 {
+            font-family: "Special Elite", cursive;
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 1.2;
+            color: var(--ink);
+            margin-bottom: 1.2rem;
+        }
+
+        .lp-hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 2rem;
+        }
+
+        .lp-hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.95rem;
+            padding: 0.75rem 2rem;
+            background: var(--coral);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover { opacity: 0.87; text-decoration: none; }
+
+        .btn-secondary {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.95rem;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover { border-color: var(--coral); color: var(--coral); text-decoration: none; }
+
+        /* ── OFFLINE BANNER ── */
+        .lp-offline-banner {
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+            padding: 1rem 2rem;
+            font-family: "Courier Prime", monospace;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+        }
+
+        .lp-offline-banner strong { color: var(--coral); }
+
+        /* ── SECTIONS ── */
+        .lp-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .lp-section-title {
+            font-family: "Special Elite", cursive;
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+
+        .lp-section-sub {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2rem;
+        }
+
+        /* ── FEATURE GRID ── */
+        .lp-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .lp-feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.2rem;
+        }
+
+        .lp-feature-emoji {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .lp-feature-title {
+            font-family: "Special Elite", cursive;
+            font-size: 0.95rem;
+            color: var(--ink);
+            margin-bottom: 0.3rem;
+        }
+
+        .lp-feature-desc {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── PAGES LIST ── */
+        .lp-pages {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .lp-page-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.9rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .lp-page-num {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.72rem;
+            color: var(--coral);
+            font-weight: bold;
+            min-width: 24px;
+            padding-top: 2px;
+        }
+
+        .lp-page-name {
+            font-family: "Special Elite", cursive;
+            font-size: 0.95rem;
+            color: var(--ink);
+        }
+
+        .lp-page-desc {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+
+        /* ── SCREENSHOTS ── */
+        .lp-screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .lp-screenshot-slot {
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+
+        .lp-screenshot-slot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lp-screenshot-caption {
+            font-family: "Courier Prime", monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            text-align: center;
+            padding: 0.4rem 0.5rem 0.5rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ── DIVIDER ── */
+        .lp-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ── FREE PANEL ── */
+        .lp-free {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .lp-free-title {
+            font-family: "Special Elite", cursive;
+            font-size: 1.3rem;
+            color: var(--ink);
+            margin-bottom: 0.8rem;
+        }
+
+        .lp-free-list {
+            list-style: none;
+            font-family: "Courier Prime", monospace;
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .lp-free-list li::before { content: "✓  "; color: var(--coral); }
+
+        /* ── FOOTER ── */
+        .lp-footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            font-family: "Courier Prime", monospace;
+            font-size: 0.76rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 480px) {
+            .lp-header { padding: 1rem; }
+            .lp-hero { padding: 2.5rem 1rem 2rem; }
+            .lp-section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="lp-header">
+    <div class="lp-logo"><span>✋</span> HelpingHand</div>
+    <a class="lp-nav-btn" href="./index.html">Open App</a>
+</header>
+
+<!-- OFFLINE BANNER -->
+<div class="lp-offline-banner">
+    <strong>Works offline.</strong> Save to your home screen before you travel — emergency guides and numbers are always there, no signal needed.
+</div>
+
+<!-- HERO -->
+<section class="lp-hero">
+    <div class="lp-hero-stamp">Free · No login · No ads · No data collected</div>
+    <h1>Your safety companion.<br>Wherever you go.</h1>
+    <p>Emergency numbers for 100+ countries, first aid guides, evacuation protocols, international law — all in one app. Built for travelers, works without internet.</p>
+    <div class="lp-hero-btns">
+        <a class="btn-primary" href="./index.html">Open HelpingHand</a>
+        <a class="btn-secondary" href="#features">See what's inside</a>
+    </div>
+</section>
+
+<hr class="lp-divider" />
+
+<!-- FEATURES -->
+<section class="lp-section" id="features">
+    <div class="lp-section-title">Built for when things go wrong</div>
+    <div class="lp-section-sub">Key features</div>
+    <div class="lp-features">
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">🚨</span>
+            <div class="lp-feature-title">Emergency Numbers</div>
+            <div class="lp-feature-desc">Police, ambulance, fire and coastguard for 100+ countries. Always available offline.</div>
+        </div>
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">🔥</span>
+            <div class="lp-feature-title">Emergency Scenarios</div>
+            <div class="lp-feature-desc">14 step-by-step guides — fire, earthquake, flood, air raid, snakebite, choking and more.</div>
+        </div>
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">🫀</span>
+            <div class="lp-feature-title">First Aid & CPR</div>
+            <div class="lp-feature-desc">CPR guide, pulse meter, meditation clock. Tools for the waiting room and beyond.</div>
+        </div>
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">🌍</span>
+            <div class="lp-feature-title">City Intelligence</div>
+            <div class="lp-feature-desc">Hospitals, consulates, transport, no-go zones, conduct rules for 16 major cities.</div>
+        </div>
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">⚖️</span>
+            <div class="lp-feature-title">International Law</div>
+            <div class="lp-feature-desc">Geneva Conventions, UDHR, Vienna Convention, Refugee rights — your legal reference abroad.</div>
+        </div>
+        <div class="lp-feature-card">
+            <span class="lp-feature-emoji">🌤️</span>
+            <div class="lp-feature-title">Live Conditions</div>
+            <div class="lp-feature-desc">Weather, air quality, earthquake alerts, exchange rates — for any city in the world.</div>
+        </div>
+    </div>
+</section>
+
+<hr class="lp-divider" />
+
+<!-- PAGES -->
+<section class="lp-section">
+    <div class="lp-section-title">Eight pages of information</div>
+    <div class="lp-section-sub">What's inside</div>
+    <div class="lp-pages">
+        <div class="lp-page-row">
+            <div class="lp-page-num">01</div>
+            <div>
+                <div class="lp-page-name">Strategic Risk</div>
+                <div class="lp-page-desc">Weather · Emergency numbers · Air quality · Earthquake alerts · Safety score</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">02</div>
+            <div>
+                <div class="lp-page-name">Practical Safety</div>
+                <div class="lp-page-desc">Consulate · Hospital · Transport · No-go zones · Conduct rules · Travel documents</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">03</div>
+            <div>
+                <div class="lp-page-name">People & Identity</div>
+                <div class="lp-page-desc">City facts · Culture · Food & drink · Attractions · Sport · Local media</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">04</div>
+            <div>
+                <div class="lp-page-name">Wellness & First Aid</div>
+                <div class="lp-page-desc">CPR guide · Pulse meter · Meditation clock · Stress quotes</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">05</div>
+            <div>
+                <div class="lp-page-name">International Law Library</div>
+                <div class="lp-page-desc">8 foundational legal documents — your rights anywhere in the world</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">06</div>
+            <div>
+                <div class="lp-page-name">City Map</div>
+                <div class="lp-page-desc">Interactive map · Hospital · Police · Airport · Consulate pins · Compass</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">07</div>
+            <div>
+                <div class="lp-page-name">Emergency Guide</div>
+                <div class="lp-page-desc">14 scenarios — fire, earthquake, flood, air raid, medical emergencies and more</div>
+            </div>
+        </div>
+        <div class="lp-page-row">
+            <div class="lp-page-num">08</div>
+            <div>
+                <div class="lp-page-name">Stressed While Waiting?</div>
+                <div class="lp-page-desc">Guess the Number · Guess the Capital · Trivia Challenge — 82 questions</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="lp-divider" />
+
+<!-- SCREENSHOTS -->
+<section class="lp-section">
+    <div class="lp-section-title">See it in action</div>
+    <div class="lp-section-sub">Screenshots</div>
+    <div class="lp-screenshots">
+        <div class="lp-screenshot-slot">
+            <img src="Page1.jpg" alt="Page 1 — Strategic Risk" loading="lazy" />
+            <div class="lp-screenshot-caption">01 · Strategic Risk</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page2.jpg" alt="Page 2 — Practical Safety" loading="lazy" />
+            <div class="lp-screenshot-caption">02 · Practical Safety</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page3.jpg" alt="Page 3 — People &amp; Identity" loading="lazy" />
+            <div class="lp-screenshot-caption">03 · People &amp; Identity</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page4.jpg" alt="Page 4 — Wellness &amp; First Aid" loading="lazy" />
+            <div class="lp-screenshot-caption">04 · Wellness &amp; First Aid</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page 5.jpg" alt="Page 5 — International Law Library" loading="lazy" />
+            <div class="lp-screenshot-caption">05 · Law Library</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page6.jpg" alt="Page 6 — City Map" loading="lazy" />
+            <div class="lp-screenshot-caption">06 · City Map</div>
+        </div>
+        <div class="lp-screenshot-slot">
+            <img src="page 7.jpg" alt="Page 7 — Emergency Guide" loading="lazy" />
+            <div class="lp-screenshot-caption">07 · Emergency Guide</div>
+        </div>
+    </div>
+</section>
+
+<hr class="lp-divider" />
+
+<!-- FREE -->
+<section class="lp-section">
+    <div class="lp-free">
+        <div class="lp-free-title">Completely free. Always.</div>
+        <ul class="lp-free-list">
+            <li>No account required</li>
+            <li>No ads</li>
+            <li>No data collected</li>
+            <li>No subscription</li>
+            <li>Open in any browser</li>
+            <li>Install to home screen</li>
+        </ul>
+        <a class="btn-primary" href="./index.html">Open HelpingHand</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+    <p>HelpingHand — Travel Safety App</p>
+    <p>Designed &amp; developed by Danijel Milec · MyStudyglas.Incc</p>
+    <p style="margin-top:0.4rem; font-size:0.7rem;">Built with C (Claude Code) · For planning and peace of mind · Always verify critical information locally.</p>
+</footer>
+
+</body>
+</html>
