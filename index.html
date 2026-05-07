@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -246,8 +246,8 @@
         /* ── SCREENSHOTS ── */
         .lp-screenshots {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.4rem;
         }
 
         .lp-screenshot-slot {
@@ -259,7 +259,9 @@
 
         .lp-screenshot-slot img {
             width: 100%;
-            height: auto;
+            height: 320px;
+            object-fit: cover;
+            object-position: top;
             display: block;
         }
 
@@ -333,7 +335,7 @@
 <!-- HEADER -->
 <header class="lp-header">
     <div class="lp-logo"><span>✋</span> HelpingHand</div>
-    <a class="lp-nav-btn" href="https://damc-979.github.io/citydb/">Return to Data Demo</a>
+    <a class="lp-nav-btn" href="https://damc-979.github.io/citydb/">CityDB Demo →</a>
 </header>
 
 <!-- OFFLINE BANNER -->
@@ -347,6 +349,7 @@
     <h1>Your safety companion.<br>Wherever you go.</h1>
     <p>Emergency numbers for 100+ countries, first aid guides, evacuation protocols, international law — all in one app. Built for travelers, works without internet.</p>
     <div class="lp-hero-btns">
+        
         <a class="btn-secondary" href="#features">See what's inside</a>
     </div>
 </section>
@@ -477,8 +480,8 @@
             <div class="lp-screenshot-caption">03 · People &amp; Identity</div>
         </div>
         <div class="lp-screenshot-slot">
-            <img src="page4.jpg" alt="Page 4 — Wellness &amp; First Aid" loading="lazy" />
-            <div class="lp-screenshot-caption">04 · Wellness &amp; First Aid</div>
+            <img src="page4.jpg" alt="Page 4 — Wellness &amp; Stress releif" loading="lazy" />
+            <div class="lp-screenshot-caption">04 · Wellness &amp; Stress releif</div>
         </div>
         <div class="lp-screenshot-slot">
             <img src="page 5.jpg" alt="Page 5 — International Law Library" loading="lazy" />
@@ -492,21 +495,29 @@
             <img src="page 7.jpg" alt="Page 7 — Emergency Guide" loading="lazy" />
             <div class="lp-screenshot-caption">07 · Emergency Guide</div>
         </div>
+         <div class="lp-screenshot-slot">
+            <img src="page 8.jpg" alt="Page 8 - While waiting" loading="lazy" />
+            <div class="lp-screenshot-caption">08 · While waiting</div>
+        </div>
+         <div class="lp-screenshot-slot">
+            <img src="page 9.jpg" alt="Page 9 — Day Debrief" loading="lazy" />
+            <div class="lp-screenshot-caption">09 · Day Debrief</div>
+        </div>
     </div>
 </section>
 
 <hr class="lp-divider" />
 
 
+<!-- FOOTER -->
 <div style="text-align:right; max-width:800px; margin:0 auto; padding:0 2rem 1.5rem;">
-    <a class="lp-nav-btn" href="https://damc-979.github.io/citydb/">Return to Data Demo</a>
+    <a class="lp-nav-btn" href="https://damc-979.github.io/citydb/">CityDB Demo →</a>
 </div>
 
-<!-- FOOTER -->
 <footer class="lp-footer">
     <p>HelpingHand — Travel Safety App</p>
-    <p>Designed &amp; developed by Danijel Milec · MyStudyglas.Incc</p>
-    <p style="margin-top:0.4rem; font-size:0.7rem;">Built with C (Claude Code) · For planning and peace of mind · Always verify critical information locally.</p>
+    <p>Designed &amp; developed by Daniel · MyStudyglas.Incc</p>
+    <p style="margin-top:0.4rem; font-size:0.7rem;">Built in partnership with C  · For planning and peace of mind · Always verify and comfirm critical information locally.</p>
 </footer>
 
 </body>
